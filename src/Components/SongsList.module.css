@@ -1,0 +1,17 @@
+.list{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.inputField {
+    display: flex;
+    width: 59vw !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto;
+}
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
