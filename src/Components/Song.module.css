@@ -1,0 +1,22 @@
+.button{
+    margin:0;
+    float: right !important;
+
+}
+.buttonUpdate{
+    background-color: green;
+    border-radius: 20%;
+    float: right !important;
+
+}
+.element{
+    height: 6vh !important;
+    background-color: #777;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 60vw;
+    max-width: 60vw;
+    justify-content: space-between;
+
+}
