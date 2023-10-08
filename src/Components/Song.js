@@ -6,11 +6,10 @@ import { useState } from "react";
 
 
 
-export default function Song(props) {
+export default function Song({song, link}) {
     const [toggled, setToggled] = useState(false);
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
-    const { song } = props;
 
     
     const handleDelete = () => {
@@ -26,7 +25,10 @@ export default function Song(props) {
     }
 
     const handleClick = () => {
-        dispatch(updateSong({ oldName: song, song: input }));
+        if(input.length === 0){
+            return;
+        }
+        dispatch(updateSong({ oldSongName: song, songName: input}));
         setInput('');
         setToggled(!toggled);
     };
@@ -38,9 +40,9 @@ export default function Song(props) {
     }
 
     return (
-        <div>
+        <>
             <li className={`${style.element} list-group-item`}>
-            {song} <a rel="noopener noreferrer" target="_blank" href={`${props.link.slice(1,-1)}`}>Click</a>
+            {song} <a rel="noopener noreferrer" target="_blank" href={`${link}`}>Click</a>
                 <button className={`btn btn-primary ${style.button}`} onClick={handleUpdate}>
                     UPDATE
                 </button>
@@ -49,6 +51,6 @@ export default function Song(props) {
                 </button>
             </li>
             {toggled && <div> <input placeholder="New name..." onKeyDown={handleEnter} onChange={inputChange} /> <button onClick={handleClick}>OK</button></div>}
-        </div>
+        </>
     );
 }

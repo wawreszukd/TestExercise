@@ -4,8 +4,7 @@ import qs from 'qs';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchAuth = createAsyncThunk('songs/fetchAuth', async () => {
-  const auth = await getAuth();
-  return auth;
+  return await getAuth();
 });
 
 

@@ -9,13 +9,16 @@ import { addSong } from "../store";
 export default function SongsList() {
   const dispatch = useDispatch();
   const [songInput, setSongInput] = useState("");
-  const songs = useSelector((state) => state.songs);
-  const links = useSelector((state) => state.link);
+  const songsStored = useSelector((state) => ({
+    songs: state.songs,
+    links: state.link
+  }))
+  
 
 
   useEffect(()=>{
     dispatch(fetchAuth());
-  },[dispatch]);
+  });
   const inputHandler = (e) => {
     setSongInput(e.target.value);
   };
@@ -31,11 +34,9 @@ export default function SongsList() {
   return (
     <div className="centered">
       <ul className={`${style.list} list-group`}>
-        {songs && links  && songs.map((song, index) => {
+        {songsStored && songsStored.songs.map((song, index) => {
           return (
-            <div key={index}>
-              <Song song={song} link={links[index]} />
-            </div>
+              <Song song={song} link={songsStored.links[index]} key={`${song}-{index}`}/>
           );
         })}
       </ul>
